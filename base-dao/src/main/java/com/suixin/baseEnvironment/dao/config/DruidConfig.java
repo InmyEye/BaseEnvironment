@@ -1,4 +1,4 @@
-package com.suixin.baseEnvironment.config;
+package com.suixin.baseEnvironment.dao.config;
 
 import javax.sql.DataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
