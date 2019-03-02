@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.suixin.baseEnvironment.Application;
 import com.suixin.baseEnvironment.dao.UserMapper;
 import com.suixin.baseEnvironment.domain.dataObject.User;
+import com.suixin.baseEnvironment.service.UserService;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,8 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 public class MybatisTest {
     Logger logger=Logger.getLogger(MybatisTest.class);
+    @Autowired
+    UserService userService;
     @Autowired
     DataSource dataSource;
     @Autowired
@@ -53,6 +56,15 @@ public class MybatisTest {
             list.add(rowData);
         }
         return list;
+    }
+    @Test
+    public void testTransactional(){
+        User user=new User();
+        user.setAge(11);
+        user.setName("测试小哥");
+        user.setSex(1);
+        user.setDescription("为了找工作而努力的小哥");
+        userService.inserUser(user);
     }
 
 }
